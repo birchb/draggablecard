@@ -9,6 +9,7 @@
             v-for="(card, index) in cards"
             :key="index"
             :data="card.data"
+            v-show="card.visible"
           />
         </div>
       </div>
@@ -29,13 +30,16 @@ export default {
       dialogVis: false,
       cards: [
         {
-          data: "One"
+          data: "One",
+          visible: true
         },
         {
-          data: "Two"
+          data: "Two",
+          visible: false
         },
         {
-          data: "Three"
+          data: "Three",
+          visible: true
         }
       ]
     }
