@@ -6,18 +6,14 @@
       <q-btn dense flat icon="close" @click="closeSelf()"></q-btn>
     </q-bar>
 
-    <q-card-section>
-      <div>Dialog content 1</div>
-      <div>Dialog content 2</div>
-      <div>Dialog content 3</div>
-      <div>Dialog content 4</div>
-    </q-card-section>
+    <q-card-section>{{data}}</q-card-section>
   </q-card>
 </template>
 
 <script>
 export default {
   name: 'DraggableCard',
+  props: ['data'],
   data () {
     return {
       cardPos: {

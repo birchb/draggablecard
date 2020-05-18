@@ -8,6 +8,7 @@
             @toggleDialogVis="toggleDataVis"
             v-for="(card, index) in cards"
             :key="index"
+            :data="card.data"
           />
         </div>
       </div>
@@ -28,13 +29,13 @@ export default {
       dialogVis: false,
       cards: [
         {
-          content: "One"
+          data: "One"
         },
         {
-          content: "Two"
+          data: "Two"
         },
         {
-          content: "Three"
+          data: "Three"
         }
       ]
     }
