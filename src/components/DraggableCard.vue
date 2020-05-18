@@ -6,14 +6,14 @@
       <q-btn dense flat icon="close" @click="closeSelf()"></q-btn>
     </q-bar>
 
-    <q-card-section>{{data}}</q-card-section>
+    <q-card-section>{{data}} Index: {{index}}</q-card-section>
   </q-card>
 </template>
 
 <script>
 export default {
   name: 'DraggableCard',
-  props: ['data'],
+  props: ['data', 'index'],
   data () {
     return {
       cardPos: {
@@ -31,8 +31,8 @@ export default {
   },
   methods: {
     closeSelf () {
-      console.log('closeSelf')
-      this.$emit('toggleDialogVis')
+      console.log('closeSelf', this.index)
+      this.$emit('hideCard', this.index)
     },
     onPan (evt) {
       this.cardPos = {

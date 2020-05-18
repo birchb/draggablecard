@@ -5,10 +5,11 @@
         <q-btn label="Draggable Card" color="primary" @click="dialogVis = true"></q-btn>
         <div v-if="dialogVis">
           <draggable-card
-            @toggleDialogVis="toggleDataVis"
-            v-for="(card, index) in cards"
-            :key="index"
             :data="card.data"
+            :index="index"
+            :key="index"
+            @hideCard="hideCard"
+            v-for="(card, index) in cards"
             v-show="card.visible"
           />
         </div>
@@ -45,6 +46,10 @@ export default {
     }
   },
   methods: {
+    hideCard (index) {
+      console.log('hideCard -> index', index)
+      this.cards[index].visible = false
+    },
     toggleDataVis () {
       this.dialogVis = !this.dialogVis
     }
