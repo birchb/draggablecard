@@ -3,7 +3,13 @@
     <div id="q-app">
       <div class="q-pa-md q-gutter-sm">
         <q-btn label="Draggable Card" color="primary" @click="dialogVis = true"></q-btn>
-        <draggable-card v-if="dialogVis" @toggleDialogVis="toggleDataVis" />
+        <div v-if="dialogVis">
+          <draggable-card
+            @toggleDialogVis="toggleDataVis"
+            v-for="(card, index) in cards"
+            :key="index"
+          />
+        </div>
       </div>
     </div>
   </q-page>
@@ -20,6 +26,17 @@ export default {
   data () {
     return {
       dialogVis: false,
+      cards: [
+        {
+          content: "One"
+        },
+        {
+          content: "Two"
+        },
+        {
+          content: "Three"
+        }
+      ]
     }
   },
   methods: {
