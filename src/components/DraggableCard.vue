@@ -35,6 +35,7 @@ export default {
   },
   methods: {
     closeSelf () {
+      console.log('closeSelf')
       this.$emit('toggleDialogVis')
     },
     onPan (evt) {
