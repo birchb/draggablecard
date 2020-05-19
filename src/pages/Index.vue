@@ -5,10 +5,8 @@
         <q-btn label="Draggable Card" color="primary" @click="toggleCardsVis"></q-btn>
         <div v-if="cardsVis">
           <draggable-card
-            :card.sync="card"
-            :index="index"
+            v-bind.sync="card"
             :key="index"
-            @hideCard="hideCard"
             v-for="(card, index) in cards"
             v-show="card.visible"
           />
@@ -49,10 +47,10 @@ export default {
     }
   },
   methods: {
-    hideCard (index) {
-      console.log('hideCard -> index', index)
-      this.cards[index].visible = false
-    },
+    // hideCard (index) {
+    //   console.log('hideCard -> index', index)
+    //   this.cards[index].visible = false
+    // },
     toggleCardsVis () {
       this.cardsVis = !this.cardsVis
     }

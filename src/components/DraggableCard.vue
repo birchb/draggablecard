@@ -1,12 +1,12 @@
 <template>
   <q-card :style="cardStyle" style="max-width: 20vw">
     <q-bar class="bg-primary text-white" v-touch-pan.mouse="onPan">
-      <div>{{card.title}}</div>
+      <div>{{title}}</div>
       <q-space></q-space>
       <q-btn dense flat icon="close" @click="closeSelf()"></q-btn>
     </q-bar>
 
-    <q-card-section>Data: {{card.data}}; Index: {{index}}</q-card-section>
+    <q-card-section>Data: {{data}}</q-card-section>
     <q-btn-group spread>
       <q-btn outline color="brown" label="-" @click="decrement" />
       <q-btn outline color="brown" label="+" @click="increment" />
@@ -17,7 +17,7 @@
 <script>
 export default {
   name: 'DraggableCard',
-  props: ['card', 'index'],
+  props: ['data', 'title', 'visible'],
   data () {
     return {
       cardPos: {
@@ -35,16 +35,15 @@ export default {
   },
   methods: {
     closeSelf () {
-      console.log('closeSelf', this.index)
-      this.$emit('hideCard', this.index)
+      console.log('closeSelf')
+      // this.$emit('hideCard', this.index)
+      this.$emit('update:visible', false)
     },
     decrement () {
-      let val = this.card.data--
-      this.$emit('update:card.data', val)
+      this.$emit('update:data', this.data - 1)
     },
     increment () {
-      let val = this.card.data++
-      this.$emit('update:card.data', val)
+      this.$emit('update:data', this.data + 1)
     },
     onPan (evt) {
       this.cardPos = {
