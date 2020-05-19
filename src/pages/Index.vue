@@ -2,8 +2,8 @@
   <q-page class="flex flex-center">
     <div id="q-app">
       <div class="q-pa-md q-gutter-sm">
-        <q-btn label="Draggable Card" color="primary" @click="dialogVis = true"></q-btn>
-        <div v-if="dialogVis">
+        <q-btn label="Draggable Card" color="primary" @click="toggleCardsVis"></q-btn>
+        <div v-if="cardsVis">
           <draggable-card
             :data="card.data"
             :index="index"
@@ -28,7 +28,7 @@ export default {
   },
   data () {
     return {
-      dialogVis: false,
+      cardsVis: false,
       cards: [
         {
           data: "One",
@@ -50,8 +50,8 @@ export default {
       console.log('hideCard -> index', index)
       this.cards[index].visible = false
     },
-    toggleDataVis () {
-      this.dialogVis = !this.dialogVis
+    toggleCardsVis () {
+      this.cardsVis = !this.cardsVis
     }
   }
 }
