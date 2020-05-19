@@ -5,7 +5,7 @@
         <q-btn label="Draggable Card" color="primary" @click="toggleCardsVis"></q-btn>
         <div v-if="cardsVis">
           <draggable-card
-            :data="card.data"
+            :card.sync="card"
             :index="index"
             :key="index"
             @hideCard="hideCard"
@@ -31,15 +31,18 @@ export default {
       cardsVis: false,
       cards: [
         {
-          data: "One",
+          data: 1,
+          title: "Amy",
           visible: true
         },
         {
-          data: "Two",
+          data: 2,
+          title: "Billy",
           visible: false
         },
         {
-          data: "Three",
+          data: 3,
+          title: "Cathleen",
           visible: true
         }
       ]
