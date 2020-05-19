@@ -6,8 +6,8 @@
         <div v-if="cardsVis">
           <draggable-card
             v-bind.sync="card"
-            :key="index"
-            v-for="(card, index) in cards"
+            :key="card.id"
+            v-for="card in cards"
             v-show="card.visible"
           />
         </div>
@@ -30,16 +30,19 @@ export default {
       cards: [
         {
           data: 1,
+          id: 1,
           title: "Amy",
           visible: true
         },
         {
           data: 2,
+          id: 2,
           title: "Billy",
           visible: false
         },
         {
           data: 3,
+          id: 3,
           title: "Cathleen",
           visible: true
         }
