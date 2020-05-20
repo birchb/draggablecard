@@ -1,18 +1,23 @@
 <template>
-  <q-page class="flex flex-center">
-    <div id="q-app">
-      <div class="q-pa-md q-gutter-sm">
-        <q-btn label="Draggable Card" color="primary" @click="toggleCardsVis"></q-btn>
-        <div v-if="cardsVis">
+  <q-page>
+    <div id="q-app" class="window-height">
+      <!-- <div class="q-pa-md q-gutter-sm full-height"> -->
+      <q-splitter v-model="splitterModel" class="full-height">
+        <template v-slot:before>
           <draggable-card
             v-bind.sync="card"
             :key="card.id"
             v-for="card in cards"
             v-show="card.visible"
           />
-        </div>
-      </div>
+        </template>
+        <template v-slot:separator>
+          <q-avatar color="primary" text-color="white" size="40px" icon="drag_indicator" />
+        </template>
+        <template v-slot:after></template>
+      </q-splitter>
     </div>
+    <!-- </div> -->
   </q-page>
 </template>
 
@@ -46,7 +51,8 @@ export default {
           title: "Cathleen",
           visible: true
         }
-      ]
+      ],
+      splitterModel: 80
     }
   },
   methods: {
