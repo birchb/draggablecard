@@ -1,12 +1,11 @@
 <template>
   <q-page>
     <div id="q-app" class="window-height">
-      <!-- <div class="q-pa-md q-gutter-sm full-height"> -->
       <q-banner inline-actions rounded class="bg-orange text-white">
         Draggable button set layout
         <template v-slot:action>
-          <q-btn flat label="Show" @click="setSplitterModel(80)" />
-          <q-btn flat label="Hide" @click="setSplitterModel(100)" />
+          <q-btn flat label="Hide" @click="setSplitterModel(100)" v-if="splitterModel < 100" />
+          <q-btn flat label="Show" @click="setSplitterModel(80)" v-if="splitterModel === 100" />
         </template>
       </q-banner>
       <q-splitter v-model="splitterModel" class="full-height" :limits="[80, 100]">
@@ -18,13 +17,18 @@
             v-show="card.visible"
           />
         </template>
-        <!-- <template v-slot:separator>
-          <q-avatar color="primary" text-color="white" size="40px" icon="drag_indicator" />
-        </template>-->
+        <template v-slot:separator>
+          <q-avatar
+            v-if="splitterModel < 100"
+            color="primary"
+            text-color="white"
+            size="20px"
+            icon="drag_indicator"
+          />
+        </template>
         <template v-slot:after></template>
       </q-splitter>
     </div>
-    <!-- </div> -->
   </q-page>
 </template>
 
