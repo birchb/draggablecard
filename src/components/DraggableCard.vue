@@ -1,5 +1,5 @@
 <template>
-  <q-card :style="cardStyle" style="max-width: 20vw">
+  <q-card :style="cardStyle" class="q-ma-sm" style="max-width: 20vw">
     <q-bar class="bg-primary text-white" v-touch-pan.mouse="onPan">
       <div>{{title}}</div>
       <q-space></q-space>
