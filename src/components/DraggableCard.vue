@@ -3,7 +3,7 @@
     <q-bar class="bg-primary text-white" v-touch-pan.mouse="onPan">
       <div>{{title}}</div>
       <q-space></q-space>
-      <q-btn dense flat icon="close" @click="closeSelf()"></q-btn>
+      <q-btn dense flat icon="close" @click="hideSelf()"></q-btn>
     </q-bar>
 
     <q-card-section>Data: {{data}}</q-card-section>
@@ -34,9 +34,7 @@ export default {
     }
   },
   methods: {
-    closeSelf () {
-      console.log('closeSelf')
-      // this.$emit('hideCard', this.index)
+    hideSelf () {
       this.$emit('update:visible', false)
     },
     decrement () {

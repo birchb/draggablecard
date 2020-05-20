@@ -77,6 +77,18 @@ export default {
     toggleCardsVis () {
       this.cardsVis = !this.cardsVis
     }
+  },
+  computed: {
+    hiddenCards () {
+      return this.cards.filter(card => {
+        return !card.visible
+      })
+    },
+    visibleCards () {
+      return this.cards.filter(card => {
+        return card.visible
+      })
+    }
   }
 }
 </script>
