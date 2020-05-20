@@ -2,7 +2,14 @@
   <q-page>
     <div id="q-app" class="window-height">
       <!-- <div class="q-pa-md q-gutter-sm full-height"> -->
-      <q-splitter v-model="splitterModel" class="full-height">
+      <q-banner inline-actions rounded class="bg-orange text-white">
+        Draggable button set layout
+        <template v-slot:action>
+          <q-btn flat label="Show" @click="setSplitterModel(80)" />
+          <q-btn flat label="Hide" @click="setSplitterModel(100)" />
+        </template>
+      </q-banner>
+      <q-splitter v-model="splitterModel" class="full-height" :limits="[80, 100]">
         <template v-slot:before>
           <draggable-card
             v-bind.sync="card"
@@ -11,9 +18,9 @@
             v-show="card.visible"
           />
         </template>
-        <template v-slot:separator>
+        <!-- <template v-slot:separator>
           <q-avatar color="primary" text-color="white" size="40px" icon="drag_indicator" />
-        </template>
+        </template>-->
         <template v-slot:after></template>
       </q-splitter>
     </div>
@@ -60,6 +67,9 @@ export default {
     //   console.log('hideCard -> index', index)
     //   this.cards[index].visible = false
     // },
+    setSplitterModel (x) {
+      this.splitterModel = x
+    },
     toggleCardsVis () {
       this.cardsVis = !this.cardsVis
     }
