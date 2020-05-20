@@ -10,12 +10,7 @@
       </q-banner>
       <q-splitter v-model="splitterModel" class="full-height" :limits="[80, 100]">
         <template v-slot:before>
-          <draggable-card
-            v-bind.sync="card"
-            :key="card.id"
-            v-for="card in cards"
-            v-show="card.visible"
-          />
+          <draggable-card v-bind.sync="card" :key="card.id" v-for="card in visibleCards" />
         </template>
         <template v-slot:separator>
           <q-avatar
@@ -26,7 +21,9 @@
             icon="drag_indicator"
           />
         </template>
-        <template v-slot:after></template>
+        <template v-slot:after>
+          <hidden-card v-bind.sync="card" :key="card.id" v-for="card in hiddenCards" />
+        </template>
       </q-splitter>
     </div>
   </q-page>
@@ -35,10 +32,12 @@
 <script>
 
 import DraggableCard from '../components/DraggableCard'
+import hiddenCard from '../components/hiddenCard'
 export default {
   name: 'PageIndex',
   components: {
-    DraggableCard
+    DraggableCard,
+    hiddenCard
   },
   data () {
     return {
