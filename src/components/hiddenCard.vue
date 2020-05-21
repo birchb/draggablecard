@@ -1,5 +1,5 @@
 <template>
-  <q-btn :label="title" @click="showSelf()" />
+  <q-btn :label="title" @click="showSelf()" class="full-width" />
 </template>
 
 <script>
